@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace datawedge_MAUI_SampleApp.Platforms.Android
 {
 
-	[BroadcastReceiver(Enabled = true)]
+	[BroadcastReceiver(Enabled = true, Exported =true)]
 	[IntentFilter(new[] { "com.ndzl.DW" })]
 	public class DWIntentReceiver : BroadcastReceiver
 	{
@@ -23,10 +23,10 @@ namespace datawedge_MAUI_SampleApp.Platforms.Android
 			//System.Console.WriteLine("Here is DW on MAUI");
 			if (intent.Extras != null)
 			{
-				String bc_data = intent.Extras.GetString("com.symbol.datawedge.label_type");
-				String bc_type = intent.Extras.GetString("com.symbol.datawedge.data_string");
+				String bc_type = intent.Extras.GetString("com.symbol.datawedge.label_type");
+				String bc_data = intent.Extras.GetString("com.symbol.datawedge.data_string");
 
-				WeakReferenceMessenger.Default.Send(bc_data+" "+bc_type);
+				WeakReferenceMessenger.Default.Send(bc_type + " "+ bc_data);
 			}
 
 
