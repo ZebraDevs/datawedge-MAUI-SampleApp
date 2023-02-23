@@ -8,7 +8,10 @@ Alternatively, you can define a DW Profile at runtime by means of the DW Intent 
 
 Screenshots from the app
 
-![image](https://user-images.githubusercontent.com/11386676/220945936-38290c10-b81d-4894-baf4-ca1ad496a45e.png)    ![image](https://user-images.githubusercontent.com/11386676/220946112-0b9ead49-ae9c-4d1f-8a01-0bccd69254f9.png)
+![image](https://user-images.githubusercontent.com/11386676/220946535-1da4975f-7434-45aa-ba6c-27285c55c547.png)
+
+![image](https://user-images.githubusercontent.com/11386676/220946708-139adf85-f4f9-4688-a1ed-f4a235ef16c2.png)
+
 
 
 
