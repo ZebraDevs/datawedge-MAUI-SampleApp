@@ -27,7 +27,7 @@
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I"
                 FontSize="16"
                 HorizontalOptions="Center"
-                x:Name="lbWelcome"
+                x:Name="lbDisplayBarcodeData"
                 />
 
             <Button

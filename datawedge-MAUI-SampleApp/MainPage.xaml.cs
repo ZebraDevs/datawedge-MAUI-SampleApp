@@ -12,7 +12,7 @@ public partial class MainPage : ContentPage
 
 		WeakReferenceMessenger.Default.Register<string>(this, (r, m) =>
 		{
-			MainThread.BeginInvokeOnMainThread(() => { lbWelcome.Text += "\n"+m; });
+			MainThread.BeginInvokeOnMainThread(() => { lbDisplayBarcodeData.Text += "\n"+m; });
 		});
 	}
 
