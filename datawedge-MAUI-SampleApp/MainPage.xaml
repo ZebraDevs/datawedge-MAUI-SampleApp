@@ -30,12 +30,40 @@
                 x:Name="lbDisplayBarcodeData"
                 />
 
-            <Button
+            <HorizontalStackLayout>
+                <Button
                 x:Name="CounterBtn"
                 Text="Click me"
                 SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Center" />
+
+                <Label
+              Text=" "
+              SemanticProperties.HeadingLevel="Level1"
+              FontSize="32"
+              HorizontalOptions="Center" />
+
+                <Button
+                x:Name="DwOFF"
+                Text="DW OFF"
+                SemanticProperties.Hint="To switch off Datawedge"
+                Clicked="OnDWOFFClicked"
+                HorizontalOptions="Center" />
+
+                <Label
+              Text=" "
+              SemanticProperties.HeadingLevel="Level1"
+              FontSize="32"
+              HorizontalOptions="Center" />
+
+                <Button
+                x:Name="DwON"
+                Text="DW ON"
+                SemanticProperties.Hint="To switch on Datawedge"
+                Clicked="OnDWONClicked"
+                HorizontalOptions="Center" />
+            </HorizontalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>
