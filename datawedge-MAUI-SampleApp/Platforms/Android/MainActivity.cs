@@ -37,13 +37,21 @@ public class MainActivity : MauiAppCompatActivity
                         i.PutExtra("COMMAND_IDENTIFIER", "MY_DISABLE_SCANNER");  //Unique identifier
                         this.SendBroadcast(i);
                     }
-                    else if (li=="22") {
+                    else if (li == "22") {
                         Intent i = new Intent();
                         i.SetAction("com.symbol.datawedge.api.ACTION");
                         i.PutExtra("com.symbol.datawedge.api.SCANNER_INPUT_PLUGIN", "ENABLE_PLUGIN");
                         i.PutExtra("SEND_RESULT", "true");
                         i.PutExtra("COMMAND_IDENTIFIER", "MY_ENABLE_SCANNER");  //Unique identifier
                         this.SendBroadcast(i);
+                    }
+                    else if (li == "33") {
+
+                        global::Android.Content.Intent i = new global::Android.Content.Intent();
+                        i.SetAction("com.symbol.datawedge.api.ACTION");
+                        i.PutExtra("com.symbol.datawedge.api.GET_ACTIVE_PROFILE", "" );
+                        //i.PutExtra("com.symbol.datawedge.api.GET_PROFILES_LIST", "" );
+                        SendBroadcast(i);
                     }
 
                 });
@@ -74,8 +82,8 @@ public class MainActivity : MauiAppCompatActivity
 		IntentFilter filter = new IntentFilter();
 		filter.AddCategory("android.intent.category.DEFAULT");
 		filter.AddAction("com.ndzl.DW");
-		filter.AddAction("com.zebra.sensors");
-
+		filter.AddAction("com.symbol.datawedge.api.RESULT_ACTION");
+		
 		Intent regres = RegisterReceiver(new DWIntentReceiver(), filter);
 	}
 }

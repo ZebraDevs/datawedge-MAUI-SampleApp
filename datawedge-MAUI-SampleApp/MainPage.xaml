@@ -65,6 +65,13 @@
                 HorizontalOptions="Center" />
             </HorizontalStackLayout>
 
+            <Button
+                x:Name="DwACTIVEPROFILE"
+                Text="DW ACTIVE PROFILE"
+                SemanticProperties.Hint="Get DW Active Profile"
+                Clicked="OnDWGetActiveProfile"
+                HorizontalOptions="Center" />
+
         </VerticalStackLayout>
     </ScrollView>
 

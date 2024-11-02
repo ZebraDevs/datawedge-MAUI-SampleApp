@@ -42,6 +42,12 @@ public partial class MainPage : ContentPage
     {
         WeakReferenceMessenger.Default.Send("22");
         WeakReferenceMessenger.Default.Send("SWITCHING ON DW");
+    }    
+	
+	private void OnDWGetActiveProfile(object sender, EventArgs e)
+    {
+        WeakReferenceMessenger.Default.Send("33");
+        WeakReferenceMessenger.Default.Send("GETTING ACTIVE PROFILE");
     }
 }
 
