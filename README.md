@@ -6,7 +6,7 @@ To install the profile, follow https://techdocs.zebra.com/datawedge/latest/guide
 
 Alternatively, you can define a DW Profile at runtime by means of the DW Intent APIs as explained here https://techdocs.zebra.com/datawedge/11-4/guide/api/ 
 
-Screenshots from the app v1.2
+Screenshots from the app v1.2 - Tested on TC53e, Android 13, DW 13.0.341
 
 ![image](https://user-images.githubusercontent.com/11386676/220946535-1da4975f-7434-45aa-ba6c-27285c55c547.png)
 
