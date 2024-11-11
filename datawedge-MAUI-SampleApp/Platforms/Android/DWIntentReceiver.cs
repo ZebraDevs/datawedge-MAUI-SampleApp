@@ -27,15 +27,17 @@ namespace datawedge_MAUI_SampleApp.Platforms.Android
             {
                 if (intent.HasExtra("com.symbol.datawedge.barcodes"))
                 {
-                    WeakReferenceMessenger.Default.Send("NG SIMULSCAN - MULTIBARCODE DETECTED");
+                    WeakReferenceMessenger.Default.Send("NG SIMULSCAN - MULTIBARCODE");
                     List<Bundle> palobs = intent.Extras.GetParcelableArrayList("com.symbol.datawedge.barcodes").Cast<Bundle>().ToList();
+                    StringBuilder sb = new StringBuilder();
                     foreach (Bundle b in palobs)
                     {
                         String barcode = b.GetString("com.symbol.datawedge.data_string");
                         String timestamp = b.GetString("com.symbol.datawedge.timestamp");
                         String symbology = b.GetString("com.symbol.datawedge.label_type");
-                        WeakReferenceMessenger.Default.Send(symbology + " " + barcode);
+                        sb.AppendLine("-"+symbology + " " + barcode);
                     }
+                    WeakReferenceMessenger.Default.Send(sb.ToString());
                 }
                 else if (intent.HasExtra("com.symbol.datawedge.label_type"))
                 {
