@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.OS;
 using Android.Util;
+using AndroidX.Core;
 using CommunityToolkit.Mvvm.Messaging;
 using System;
 using System.Collections.Generic;
@@ -17,14 +18,27 @@ namespace datawedge_MAUI_SampleApp.Platforms.Android
 {
 
 [BroadcastReceiver(Enabled = true, Exported =true)]
-public class DWIntentReceiver : BroadcastReceiver
-	{
-		public override void OnReceive(Context context, Intent intent)
-		{
+    public class DWIntentReceiver : BroadcastReceiver
+    {
+        public override void OnReceive(Context context, Intent intent)
+        {
             System.Console.WriteLine("Here is DW on MAUI");
             if (intent.Extras != null)
             {
-                if (intent.HasExtra("com.symbol.datawedge.label_type")) {
+                if (intent.HasExtra("com.symbol.datawedge.barcodes"))
+                {
+                    WeakReferenceMessenger.Default.Send("NG SIMULSCAN - MULTIBARCODE DETECTED");
+                    List<Bundle> palobs = intent.Extras.GetParcelableArrayList("com.symbol.datawedge.barcodes").Cast<Bundle>().ToList();
+                    foreach (Bundle b in palobs)
+                    {
+                        String barcode = b.GetString("com.symbol.datawedge.data_string");
+                        String timestamp = b.GetString("com.symbol.datawedge.timestamp");
+                        String symbology = b.GetString("com.symbol.datawedge.label_type");
+                        WeakReferenceMessenger.Default.Send(symbology + " " + barcode);
+                    }
+                }
+                else if (intent.HasExtra("com.symbol.datawedge.label_type"))
+                {
                     String bc_type = intent.Extras.GetString("com.symbol.datawedge.label_type");
                     String bc_data = intent.Extras.GetString("com.symbol.datawedge.data_string");
 
@@ -50,13 +64,7 @@ public class DWIntentReceiver : BroadcastReceiver
                     }
                     catch (Exception e) { }
                 }
-
             }
-
-
-            
-
-
-		}
-	}
+        }
+    }
 }
