@@ -16,4 +16,4 @@ Screenshots from the app v1.2 - Tested on TC53e, Android 13, DW 13.0.341
 
 ![image](https://github.com/user-attachments/assets/8b7e4c94-e477-448f-9a27-f60f5c55c9e7)
 
-
+![image](https://cxnt48.com/author?ghMAUIdw) 
