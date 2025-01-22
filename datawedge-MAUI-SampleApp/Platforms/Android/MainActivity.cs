@@ -76,14 +76,13 @@ public class MainActivity : MauiAppCompatActivity
         outState.PutString("time", currentDatetime);
         base.OnSaveInstanceState(outState);
     }
-
     void RegisterReceivers()
-	{
-		IntentFilter filter = new IntentFilter();
-		filter.AddCategory("android.intent.category.DEFAULT");
-		filter.AddAction("com.ndzl.DW");
-		filter.AddAction("com.symbol.datawedge.api.RESULT_ACTION");
-		
-		Intent regres = RegisterReceiver(new DWIntentReceiver(), filter);
-	}
+    {
+        IntentFilter filter = new IntentFilter();
+        filter.AddCategory("android.intent.category.DEFAULT");
+        filter.AddAction("com.ndzl.DW");
+        filter.AddAction("com.symbol.datawedge.api.RESULT_ACTION");
+
+        Intent regres = AndroidX.Core.Content.ContextCompat.RegisterReceiver(this, new DWIntentReceiver(), filter, AndroidX.Core.Content.ContextCompat.ReceiverExported);
+    }
 }
