@@ -21,11 +21,13 @@ public class MainActivity : MauiAppCompatActivity
     { 
         base.OnPostCreate(savedInstanceState);
         RegisterReceivers();
+        WeakReferenceMessenger.Default.Send(DisplayDotNetVersion());
+        WeakReferenceMessenger.Default.Send(DisplayTargetApiLevel());
 
 
 
 
-            WeakReferenceMessenger.Default.Register<string>(this, (r, li) =>
+        WeakReferenceMessenger.Default.Register<string>(this, (r, li) =>
             {
                 MainThread.BeginInvokeOnMainThread(() => {
                     if (li == "11")
@@ -69,6 +71,18 @@ public class MainActivity : MauiAppCompatActivity
         }
     }
 
+    private string DisplayDotNetVersion()
+    {
+        return "Current .NET version:"+ System.Environment.Version;
+
+    }
+
+    private string DisplayTargetApiLevel()
+    {
+        var packageInfo = PackageManager.GetPackageInfo(PackageName, 0);
+        var targetSdkVersion = packageInfo.ApplicationInfo.TargetSdkVersion;
+        return "Current Target API Level: " + targetSdkVersion;
+    }
 
     protected override void OnSaveInstanceState(Bundle outState)
     {
