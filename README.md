@@ -1,6 +1,11 @@
 # datawedge-MAUI-SampleApp
 Showing how to integrate Zebra Datawedge barcode readings into an existing .NET MAUI App. DW is sending readings via broadcast Intents and needs a specific profile setup which is part of this solution.
 
+## Latest updates (Jan.2025)
+- now running on .NET9, targeting API Level 35!
+- ![image](https://github.com/user-attachments/assets/964d47d2-61e6-466a-b9fd-7570e0fc9f89)
+
+
 See the Releases section of this repository to download the DW Profile0.
 To install the profile, follow https://techdocs.zebra.com/datawedge/latest/guide/settings/#datawedgesettings 
 
