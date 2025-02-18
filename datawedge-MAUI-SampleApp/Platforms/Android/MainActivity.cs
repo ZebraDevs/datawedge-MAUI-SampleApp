@@ -8,6 +8,7 @@ using datawedge_MAUI_SampleApp.Platforms.Android;
 using Java.Lang;
 using System.Diagnostics.Metrics;
 using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Xml.Linq;
 
 namespace datawedge_MAUI_SampleApp;
@@ -18,7 +19,8 @@ public class MainActivity : MauiAppCompatActivity
 {
     //protected override void OnCreate(Bundle savedInstanceState) {
     protected override void OnPostCreate(Bundle savedInstanceState)
-    { 
+    {
+        ImportProfile("dwprofile_com.ndzl.dwmaui");
         base.OnPostCreate(savedInstanceState);
         RegisterReceivers();
         WeakReferenceMessenger.Default.Send(DisplayDotNetVersion());
@@ -98,5 +100,81 @@ public class MainActivity : MauiAppCompatActivity
         filter.AddAction("com.symbol.datawedge.api.RESULT_ACTION");
 
         Intent regres = AndroidX.Core.Content.ContextCompat.RegisterReceiver(this, new DWIntentReceiver(), filter, AndroidX.Core.Content.ContextCompat.ReceiverExported);
+    }
+
+    private void ImportProfile(string profileFilenameWithoutDbExtension)
+    {
+        // Define directories and file names
+        // /enterprise/device/settings/datawedge/autoimport
+        string autoImportDir = "/enterprise/device/settings/datawedge/autoimport/";
+        string temporaryFileName = profileFilenameWithoutDbExtension + ".tmp";
+        string finalFileName = profileFilenameWithoutDbExtension + ".db";
+
+        Stream inputStream = null;
+        FileStream fileOutputStream = null;
+        FileInfo outputFile = null;
+        FileInfo finalFile = null;
+
+        try
+        {
+            // Access the asset stream from the application assets
+            inputStream = FileSystem.Current.OpenAppPackageFileAsync(finalFileName).Result;
+
+            // Create a directory for the output if it doesn't exist
+            DirectoryInfo outputDirectory = new DirectoryInfo(autoImportDir);
+            if (!outputDirectory.Exists)
+            {
+                outputDirectory.Create();
+            }
+
+            // Create temporary and final file objects
+            outputFile = new FileInfo(Path.Combine(outputDirectory.FullName, temporaryFileName));
+            finalFile = new FileInfo(Path.Combine(outputDirectory.FullName, finalFileName));
+
+            // Create a FileStream for the temporary output file
+            fileOutputStream = new FileStream(outputFile.FullName, FileMode.Create, FileAccess.Write);
+
+            // Transfer bytes from the input stream to the output stream
+            byte[] buffer = new byte[1024];
+            int length;
+            int tot = 0;
+            while ((length = inputStream.Read(buffer, 0, buffer.Length)) > 0)
+            {
+                fileOutputStream.Write(buffer, 0, length);
+                tot += length;
+            }
+            Console.WriteLine($"{tot} bytes copied");
+
+            // Flush and close the output stream
+            fileOutputStream.Flush();
+        }
+        catch (Java.Lang.Exception e)
+        {
+            Console.WriteLine(e.ToString());
+        }
+        finally
+        {
+            // Ensure the stream is properly closed
+            fileOutputStream?.Close();
+
+            // Set permissions and rename the file if applicable
+            if (outputFile != null)
+            {
+                // Rename the temporary file to the final file
+                if (finalFile != null)
+                {
+                    if (outputFile.Exists)
+                    {
+                        if(finalFile.Exists)
+                        {
+                            finalFile.Delete();
+                        }
+
+                        FilePermissionHelper.setFilePermissions(outputFile.FullName, true, true, true);
+                        outputFile.MoveTo(finalFile.FullName);
+                    }
+                }
+            }
+        }
     }
 }
