@@ -48,6 +48,14 @@ public partial class MainPage : ContentPage
     {
         WeakReferenceMessenger.Default.Send("33");
         WeakReferenceMessenger.Default.Send("GETTING ACTIVE PROFILE");
+    }	
+	private void OnDWImportAssetProfile(object sender, EventArgs e)
+    {
+        WeakReferenceMessenger.Default.Send("44");
+        WeakReferenceMessenger.Default.Send("IMPORTING ASSET-DEFINED PROFILE");
     }
+
+
+
 }
 

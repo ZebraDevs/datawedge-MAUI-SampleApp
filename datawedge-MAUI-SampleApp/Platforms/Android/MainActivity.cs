@@ -9,7 +9,7 @@ using Java.Lang;
 using System.Diagnostics.Metrics;
 using System.Security.AccessControl;
 using System.Security.Principal;
-using System.Xml.Linq;
+using System.Xml.Linq; 
 
 namespace datawedge_MAUI_SampleApp;
 
@@ -20,7 +20,6 @@ public class MainActivity : MauiAppCompatActivity
     //protected override void OnCreate(Bundle savedInstanceState) {
     protected override void OnPostCreate(Bundle savedInstanceState)
     {
-        ImportProfile("dwprofile_com.ndzl.dwmaui");
         base.OnPostCreate(savedInstanceState);
         RegisterReceivers();
         WeakReferenceMessenger.Default.Send(DisplayDotNetVersion());
@@ -56,6 +55,9 @@ public class MainActivity : MauiAppCompatActivity
                         i.PutExtra("com.symbol.datawedge.api.GET_ACTIVE_PROFILE", "" );
                         //i.PutExtra("com.symbol.datawedge.api.GET_PROFILES_LIST", "" );
                         SendBroadcast(i);
+                    }
+                    else if (li == "44") {
+                        ImportProfile("dwprofile_com.ndzl.dwmaui");
                     }
 
                 });

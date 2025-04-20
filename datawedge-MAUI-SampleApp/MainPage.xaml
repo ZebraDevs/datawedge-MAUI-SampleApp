@@ -65,12 +65,28 @@
                 HorizontalOptions="Center" />
             </HorizontalStackLayout>
 
-            <Button
+            <HorizontalStackLayout>
+                <Button
                 x:Name="DwACTIVEPROFILE"
                 Text="DW ACTIVE PROFILE"
                 SemanticProperties.Hint="Get DW Active Profile"
                 Clicked="OnDWGetActiveProfile"
                 HorizontalOptions="Center" />
+                
+                <Label
+              Text=" "
+              SemanticProperties.HeadingLevel="Level1"
+              FontSize="32"
+              HorizontalOptions="Center" />
+                
+                <Button
+                x:Name="DWIMPORTPROFILE"
+                Text="IMPORT PROFILE"
+                SemanticProperties.Hint="Import DW Profile"
+                Clicked="OnDWImportAssetProfile"
+                HorizontalOptions="Center" />
+                
+            </HorizontalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>
