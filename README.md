@@ -3,9 +3,10 @@ Showing how to integrate Zebra Datawedge barcode readings into an existing .NET 
 
 ## Latest updates (Apr.2025)
 
-- "Import Profile" button is now available. By default, Profile0 is the default profile. By pushing the Inport Profile button, a specific, asset-predefined profile gets imported and associated to this app.
+- "Import Profile" button is now available. By default, Profile0 is the default profile. By pushing the Import Profile button, a specific, asset-predefined profile gets imported and associated to this app.
 - Check it's working with the "DW Active Profile", to see the currently set default profile.
 - If you make changes to the "com.ndzl.dwmaui" profile, remind that a new import will overwrite your changes.
+- Code behind the "Import Profile" button is credit by Laurent Trudu - Thanks Laurent!
 
 - ![image](https://github.com/user-attachments/assets/6a9c1c93-c56e-4240-ad09-edd5eb7093a7)
 
