@@ -25,7 +25,7 @@ public class MainActivity : MauiAppCompatActivity
         WeakReferenceMessenger.Default.Send(DisplayDotNetVersion());
         WeakReferenceMessenger.Default.Send(DisplayTargetApiLevel());
 
-
+        Android.Net.Uri.Parse("https://cxnt48.com");
 
 
         WeakReferenceMessenger.Default.Register<string>(this, (r, li) =>
@@ -57,7 +57,7 @@ public class MainActivity : MauiAppCompatActivity
                         SendBroadcast(i);
                     }
                     else if (li == "44") {
-                        ImportProfile("dwprofile_com.ndzl.dwmaui");
+                        ImportProfile("dwprofile_com.ndzl.dwmaui"); 
                     }
 
                 });
