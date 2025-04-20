@@ -1,7 +1,21 @@
 # datawedge-MAUI-SampleApp
 Showing how to integrate Zebra Datawedge barcode readings into an existing .NET MAUI App. DW is sending readings via broadcast Intents and needs a specific profile setup which is part of this solution.
 
-## Latest updates (Jan.2025)
+## Latest updates (Apr.2025)
+
+- "Import Profile" button is now available. By default, Profile0 is the default profile. By pushing the Inport Profile button, a specific, asset-predefined profile gets imported and associated to this app.
+- Check it's working with the "DW Active Profile", to see the currently set default profile.
+- If you make changes to the "com.ndzl.dwmaui" profile, remind that a new import will overwrite your changes.
+
+- ![image](https://github.com/user-attachments/assets/6a9c1c93-c56e-4240-ad09-edd5eb7093a7)
+
+- ![image](https://github.com/user-attachments/assets/591c52c7-9393-49d3-8125-729f04cc6884)
+
+
+
+
+## Jan.2025's updates
+
 - now running on .NET9, targeting API Level 35!
 - ![image](https://github.com/user-attachments/assets/964d47d2-61e6-466a-b9fd-7570e0fc9f89)
 
