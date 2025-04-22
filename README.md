@@ -27,6 +27,7 @@ Showing how to integrate Zebra Datawedge barcode readings into an existing .NET 
 
 ### v1.3+ - raw_data support
 - "com.symbol.datawedge.decode_data" fiels is now decoded and logged to logcat when available in the received intent
+- refer to https://github.com/ZebraDevs/datawedge-MAUI-SampleApp/blob/fce7faa6676116439144f460aad602a5547a22c0/datawedge-MAUI-SampleApp/Platforms/Android/DWIntentReceiver.cs#L45
 
 
 ## Jan.2025's updates
