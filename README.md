@@ -3,6 +3,13 @@ Showing how to integrate Zebra Datawedge barcode readings into an existing .NET 
 
 ## Latest updates (Apr.2025)
 
+### v1.5 - Free-form Image Capture profiles are supported 
+- Refer to https://github.com/ZebraDevs/datawedge-MAUI-SampleApp/blob/155b927eceba9d8c935e755583cf3030f614ec23/datawedge-MAUI-SampleApp/Platforms/Android/DWIntentReceiver.cs#L133
+- This new code section detects and decodes intents sent by a free-form image capture workflow.
+- Decoded barcode values are printed on the screen
+- The related captured image is saved to disk
+
+### v1.4 - Profile import
 - A "Import Profile" button is now available. By default, Profile0 is the default profile. By pushing the Import Profile button, a specific, asset-predefined profile gets imported and associated to this app.
 - Check it's working with the "DW Active Profile", to see the currently set default profile.
 - If you make changes to the "com.ndzl.dwmaui" profile, remind that a new import will overwrite your changes.
