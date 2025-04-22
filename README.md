@@ -8,6 +8,12 @@ Showing how to integrate Zebra Datawedge barcode readings into an existing .NET 
 - This new code section detects and decodes intents sent by a free-form image capture workflow.
 - Decoded barcode values are printed on the screen
 - The related captured image is saved to disk
+- Validated on TC58 BSP 14.20.14U160 - DW 15.0.16
+- Screenshots
+  - ![image](https://github.com/user-attachments/assets/89b63b60-ca78-4afd-b85b-211a3ff0cb71)
+  - ![image](https://github.com/user-attachments/assets/4179dcbc-12e6-490f-b0bf-7fba7eca9780)
+
+
 
 ### v1.4 - Profile import
 - A "Import Profile" button is now available. By default, Profile0 is the default profile. By pushing the Import Profile button, a specific, asset-predefined profile gets imported and associated to this app.
