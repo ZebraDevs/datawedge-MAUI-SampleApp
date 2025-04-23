@@ -9,6 +9,19 @@ Showing how to integrate Zebra Datawedge barcode readings into an existing .NET 
 - Decoded barcode values are printed on the screen
 - The related captured image is saved to disk
 - Validated on TC58 BSP 14.20.14U160 - DW 15.0.16
+- The APK for testing this feature is available here https://github.com/ZebraDevs/datawedge-MAUI-SampleApp/releases/download/v1.5/com.ndzl.dwmaui-freeformimagecapture-v1.5.apk
+  - Instructions for a brand new installation:
+  -	Install and run the APK
+  -	Push the “Import Profile” button. This creates an adhoc profile under DW
+  -	That profile scans single barcodes – doublecheck it works as such.
+  -	Then edit the com.ndzl.dwmaui profile:
+    o	Enable Workflows
+    o	Enable Freeform Image Capture
+    o	Ensure Decode&Highlight is selected.
+  -	Press the trigger button once to start the workflow session, aiming at the barcodes
+  -	Press the trigger again to capture the scene.
+  -	Decoded values are printed on the screen, the image is saved in the disk
+
 - Screenshots
   - ![image](https://github.com/user-attachments/assets/89b63b60-ca78-4afd-b85b-211a3ff0cb71)
   - ![image](https://github.com/user-attachments/assets/4179dcbc-12e6-490f-b0bf-7fba7eca9780)
