@@ -162,9 +162,45 @@ namespace datawedge_MAUI_SampleApp
                     }
 
                 }
-            
+                else if (intent.HasExtra("workflow_name") && intent.GetStringExtra("workflow_name").Equals("document_capture"))
+                {
+                    var bundle = intent.Extras;
+                    string jsonData = bundle?.GetString("com.symbol.datawedge.data");
+
+                    try
+                    {
+                        var jsonArray = JArray.Parse(jsonData);
+                        foreach (var item in jsonArray)
+                        {
+                            var jsonObject = (JObject)item;
+                            if (jsonObject.ContainsKey("string_data"))
+                            {
+
+                                String bcRes = OutputDecodeData(jsonArray);
+                                try
+                                {
+                                    WeakReferenceMessenger.Default.Send("DOCUMENT CAPTURE\n" + bcRes);
+                                }
+                                catch (Exception e) { }
+                            }
+                            else 
+                            if (jsonObject.ContainsKey("uri"))
+                            {
+                                string uri = jsonObject["uri"]?.ToString();
+                                OutputImageData(context, uri, jsonObject);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error("DW DOCUMENT CAPTURE", $"Error receiving data: {ex.Message}");
+                    }
+
+                }
+
             }
         }
+
 
 
         private String OutputDecodeData(JArray jsonArray)
@@ -207,6 +243,57 @@ namespace datawedge_MAUI_SampleApp
                 // Decode the JPEG data into a Bitmap
                 byte[] jpegData = outputStream.ToArray();
                 return BitmapFactory.DecodeByteArray(jpegData, 0, jpegData.Length);
+            }
+        }
+
+        private string OutputDocumentStringData(Context context, string uri, JObject jsonObject)
+        {
+            try
+            {
+                var cursor = context.ContentResolver.Query(Android.Net.Uri.Parse(uri), null, null, null, null);
+                using var baos = new MemoryStream();
+
+                if (cursor != null && cursor.MoveToFirst())
+                {
+                    //for (int i = 0; i < cursor.ColumnCount; i++)
+                    //{
+                    //    string col = cursor.GetColumnName(i);
+                    //}
+
+                    int rawDataIndex = cursor.GetColumnIndex("raw_data");
+                    int nextUriIndex = cursor.GetColumnIndex("next_data_uri");
+
+                    baos.Write(cursor.GetBlob(rawDataIndex));
+                    if (nextUriIndex > 0)
+                    {
+                        string nextUri = cursor.GetString(nextUriIndex);
+
+                        while (!string.IsNullOrEmpty(nextUri))
+                        {
+                            var nextCursor = context.ContentResolver.Query(Android.Net.Uri.Parse(nextUri), null, null, null, null);
+                            if (nextCursor != null && nextCursor.MoveToFirst())
+                            {
+                                baos.Write(nextCursor.GetBlob(rawDataIndex));
+                                nextUri = nextCursor.GetString(nextUriIndex);
+                                nextCursor.Close();
+                            }
+                        }
+                    }
+
+                    cursor.Close();
+                    baos.Position = 0; // Reset to the beginning
+                    using var reader = new StreamReader(baos, Encoding.UTF8);
+                    string result = reader.ReadToEnd();
+                    return result.ToString();
+                }
+                else
+                    return "No data found";
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error("DOCUMENT CAPTURE", $"Error processing image data: {ex.Message}");
+                return "ERROR";
             }
         }
 
@@ -268,7 +355,7 @@ namespace datawedge_MAUI_SampleApp
                 }
                 bitmap.Dispose();
                 baos.Dispose();
-                WeakReferenceMessenger.Default.Send($"FREEFORM IMAGE CAPTURE\nImage saved to {filePath}");
+                WeakReferenceMessenger.Default.Send($"Image saved to {filePath}");
 
             }
             catch (Exception ex)
