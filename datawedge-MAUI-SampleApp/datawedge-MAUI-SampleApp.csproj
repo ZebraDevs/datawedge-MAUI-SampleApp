@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net9.0-android35.0</TargetFrameworks>
+		<TargetFrameworks>net10.0-android36.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
 		<OutputType>Exe</OutputType>
@@ -18,7 +18,7 @@
 		<ApplicationIdGuid>89f712ef-36c3-4fbe-abbd-15e195ec4144</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.6</ApplicationDisplayVersion>
+		<ApplicationDisplayVersion>2.0-porting to NET10</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
@@ -50,13 +50,14 @@
 	  <AndroidSigningKeyPass></AndroidSigningKeyPass>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-android35.0|AnyCPU'">
-	  <Optimize>True</Optimize>
-	  <AndroidKeyStore>True</AndroidKeyStore>
-	  <AndroidSigningStorePass></AndroidSigningStorePass>
-	  <AndroidSigningKeyAlias>key0</AndroidSigningKeyAlias>
-	  <AndroidSigningKeyPass></AndroidSigningKeyPass>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net10.0-android36.0|AnyCPU'">
+	  <ApplicationDisplayVersion>2.0</ApplicationDisplayVersion>
 	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net10.0-android36.0|AnyCPU'">
+	  <ApplicationDisplayVersion>2.0</ApplicationDisplayVersion>
+	</PropertyGroup>
+
 
 	<ItemGroup>
 		<!-- App Icon -->

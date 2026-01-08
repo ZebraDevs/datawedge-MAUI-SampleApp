@@ -51,7 +51,7 @@ namespace datawedge_MAUI_SampleApp
         public void DWDecodeData(Intent _intent)
         {
 
-            var jual = _intent.Extras.Get("com.symbol.datawedge.decode_data");
+            var jual = _intent.Extras.Get ("com.symbol.datawedge.decode_data");
 
             var javaList = jual as JavaList;
 
@@ -104,7 +104,10 @@ namespace datawedge_MAUI_SampleApp
                     String bc_type = intent.Extras.GetString("com.symbol.datawedge.label_type");
                     String bc_data = intent.Extras.GetString("com.symbol.datawedge.data_string");
 
-                    DWDecodeData(intent);
+                    if(System.Environment.Version.Major<10)
+                        DWDecodeData(intent); //shows in logcat the raw decode_data (so capturing all non-printable chars)
+                    //else if(System.Environment.Version.Major==10)
+                       
 
 
 

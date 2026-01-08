@@ -65,9 +65,13 @@ public class MainActivity : MauiAppCompatActivity
         //showing saved states 
         try
         {
-            string savedDatetime = savedInstanceState.GetString("time");
-            if (savedDatetime is not null)
+            string savedDatetime = null;
+            if (savedDatetime is not null) {
+
+                savedDatetime = savedInstanceState.GetString("time");
                 WeakReferenceMessenger.Default.Send("Saved DateTime=" + savedDatetime);
+            }
+                
 
         }
         catch(System.Exception ex) {
