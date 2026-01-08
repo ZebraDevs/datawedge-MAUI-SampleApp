@@ -1,7 +1,16 @@
 # datawedge-MAUI-SampleApp
 Showing how to integrate Zebra Datawedge barcode readings into an existing .NET MAUI App. DW is sending readings via broadcast Intents and needs a specific profile setup which is part of this solution.
 
-## Latest updates (Apr.2025)
+## Latest updates (Jan.2026)
+
+### v2.0 - Most features ported to NET10
+
+<img width="358" height="308" alt="image" src="https://github.com/user-attachments/assets/d46fa8f3-3046-420e-8aa5-c3da85203b39" />
+
+- `com.symbol.datawedge.decode_data` parsing still missing
+
+
+### v1.6 - Document Capture support added
 
 ### v1.5 - Free-form Image Capture profiles are supported 
 - Refer to https://github.com/ZebraDevs/datawedge-MAUI-SampleApp/blob/155b927eceba9d8c935e755583cf3030f614ec23/datawedge-MAUI-SampleApp/Platforms/Android/DWIntentReceiver.cs#L133
