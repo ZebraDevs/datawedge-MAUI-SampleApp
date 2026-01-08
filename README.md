@@ -8,7 +8,8 @@ Showing how to integrate Zebra Datawedge barcode readings into an existing .NET 
 <img width="358" height="308" alt="image" src="https://github.com/user-attachments/assets/d46fa8f3-3046-420e-8aa5-c3da85203b39" />
 
 - including `com.symbol.datawedge.decode_data` parsing
-  <img width="730" height="215" alt="image" src="https://github.com/user-attachments/assets/d2f6ec90-9f7f-4692-8187-03f731dac844" />
+  <img width="340" height="244" alt="image" src="https://github.com/user-attachments/assets/0f2b88d2-c65a-46d6-9ebc-2a7600c84900" />
+ <img width="730" height="215" alt="image" src="https://github.com/user-attachments/assets/d2f6ec90-9f7f-4692-8187-03f731dac844" />
 
 
 
