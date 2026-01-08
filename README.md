@@ -3,11 +3,11 @@ Showing how to integrate Zebra Datawedge barcode readings into an existing .NET 
 
 ## Latest updates (Jan.2026)
 
-### v2.0 - Most features ported to NET10
+### v2.1 - Ported to NET10
 
 <img width="358" height="308" alt="image" src="https://github.com/user-attachments/assets/d46fa8f3-3046-420e-8aa5-c3da85203b39" />
 
-- `com.symbol.datawedge.decode_data` parsing still missing
+- including `com.symbol.datawedge.decode_data` parsing
 
 
 ### v1.6 - Document Capture support added
