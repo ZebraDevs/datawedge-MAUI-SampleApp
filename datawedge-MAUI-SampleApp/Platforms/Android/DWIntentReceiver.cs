@@ -20,6 +20,7 @@ using System.Xml.Linq;
 using Newtonsoft.Json.Linq;
 using Android.Graphics;
 using System.Text.RegularExpressions;
+using Java.Util;
 
 
 
@@ -71,6 +72,33 @@ namespace datawedge_MAUI_SampleApp
 
         }
 
+        public void DWDecodeDataNET10(Intent _intent)
+        {
+
+            var rawData = _intent.GetSerializableExtra("com.symbol.datawedge.decode_data")?.JavaCast<Java.Util.ArrayList>();
+
+            if (rawData != null && rawData.Size() > 0)
+            {
+                using (var javaObject = rawData.Get(0) as Java.Lang.Object)
+                {
+                    byte[]? rawBytes = null;
+                    if (javaObject != null)
+                    {
+                        rawBytes = JavaArray<byte>.FromJniHandle(javaObject.Handle, JniHandleOwnership.DoNotTransfer)?.ToArray();
+                    }
+
+                    if (rawBytes != null)
+                    {
+                        for (int i = 0; i < rawBytes.Length; i++)
+                        {
+                            Log.Debug("NET10 decode_data", $"{i}: {rawBytes[i]}");
+                        }
+                    }
+                }
+            }
+
+        }
+
         public override void OnReceive(Context context, Intent intent)
         {
             System.Console.WriteLine("Here is DW on MAUI");
@@ -104,10 +132,12 @@ namespace datawedge_MAUI_SampleApp
                     String bc_type = intent.Extras.GetString("com.symbol.datawedge.label_type");
                     String bc_data = intent.Extras.GetString("com.symbol.datawedge.data_string");
 
-                    if(System.Environment.Version.Major<10)
+                    if (System.Environment.Version.Major < 10)
                         DWDecodeData(intent); //shows in logcat the raw decode_data (so capturing all non-printable chars)
-                    //else if(System.Environment.Version.Major==10)
-                       
+                    else if (System.Environment.Version.Major == 10)
+                        DWDecodeDataNET10(intent);
+
+
 
 
 

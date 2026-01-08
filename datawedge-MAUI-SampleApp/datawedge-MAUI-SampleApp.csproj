@@ -18,7 +18,7 @@
 		<ApplicationIdGuid>89f712ef-36c3-4fbe-abbd-15e195ec4144</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>2.0-porting to NET10</ApplicationDisplayVersion>
+		<ApplicationDisplayVersion>2.1-fully ported to NET10</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
@@ -51,11 +51,11 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net10.0-android36.0|AnyCPU'">
-	  <ApplicationDisplayVersion>2.0</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>2.1</ApplicationDisplayVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net10.0-android36.0|AnyCPU'">
-	  <ApplicationDisplayVersion>2.0</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>2.1</ApplicationDisplayVersion>
 	</PropertyGroup>
 
 
